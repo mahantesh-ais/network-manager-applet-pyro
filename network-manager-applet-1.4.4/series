@@ -1,0 +1,6 @@
+openxt-menus.patch -p1
+disable-show-password.patch -p1
+disable-available-to-all-users-checkbox.patch -p1
+always-use-psk-hash.patch -p1
+default-certs-dir.patch -p1
+disable-auto-ethernet.patch -p1
