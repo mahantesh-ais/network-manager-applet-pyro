@@ -42,3 +42,24 @@
  	}
  }
  
+--- a/src/applet.c
++++ b/src/applet.c
+@@ -1354,8 +1354,7 @@ nma_menu_device_get_menu_item (NMDevice
+ 	}
+ 
+ 	if (!managed) {
+-		item = gtk_menu_item_new_with_label (_("device not managed"));
+-		gtk_widget_set_sensitive (item, FALSE);
++		return NULL;
+ 	}
+ 
+ 	return item;
+@@ -1372,7 +1371,7 @@ add_device_items (NMDeviceType type, con
+ 	for (i = 0; all_devices && (i < all_devices->len); i++) {
+ 		NMDevice *device = all_devices->pdata[i];
+ 
+-		if (nm_device_get_device_type (device) == type) {
++		if (nm_device_get_device_type (device) == type && nm_device_get_state (device) != NM_DEVICE_STATE_UNMANAGED ) {
+ 			n_devices++;
+ 			devices = g_slist_prepend (devices, device);
+ 		}
